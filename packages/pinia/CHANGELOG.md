@@ -1,3 +1,26 @@
+## [2.0.9](https://github.com/vuejs/pinia/compare/pinia@2.0.8...pinia@2.0.9) (2021-12-24)
+
+### Features
+
+- **types:** support IDE features for store context ([#924](https://github.com/vuejs/pinia/issues/924)) ([4733f49](https://github.com/vuejs/pinia/commit/4733f49c5af400aea7d3d1002265f9cdebcdd222))
+
+## [2.0.8](https://github.com/vuejs/pinia/compare/pinia@2.0.7...pinia@2.0.8) (2021-12-20)
+
+### Bug Fixes
+
+- **subscribe:** avoid $subscriptions with $patch ([3bfe9e5](https://github.com/vuejs/pinia/commit/3bfe9e51fd0f9b3f939aace53463aa10f2e9c90f)), closes [#908](https://github.com/vuejs/pinia/issues/908)
+
+## [2.0.7](https://github.com/vuejs/pinia/compare/pinia@2.0.6...pinia@2.0.7) (2021-12-20)
+
+### Bug Fixes
+
+- allow using multiple `$onAction`, **ignore returned value** ([4dc1f1b](https://github.com/vuejs/pinia/commit/4dc1f1bec8f3db508c02fa6bdcc8203f280cbb3e)), closes [#893](https://github.com/vuejs/pinia/issues/893)
+- **subscribe:** direct mutation should not trigger detached subscriptions ([a9ef6b6](https://github.com/vuejs/pinia/commit/a9ef6b6c96ae8fdf891e29ab05c5276773425e1c)), closes [#908](https://github.com/vuejs/pinia/issues/908)
+
+### Features
+
+- update devtools-api ([ca26686](https://github.com/vuejs/pinia/commit/ca266868c5c5a00f3bebb326e9a0b9aaf90fb344))
+
 ## [2.0.6](https://github.com/vuejs/pinia/compare/pinia@2.0.5...pinia@2.0.6) (2021-12-04)
 
 ### Bug Fixes
@@ -31,7 +54,7 @@
 
 ## [2.0.1](https://github.com/vuejs/pinia/compare/pinia@2.0.0...pinia@2.0.1) (2021-11-03)
 
-This release correctly removes the deprecated APIs as advertised in v2. The [documentation](https://pinia.esm.dev/cookbook/migration-v1-v2.html) contains a list of all the deprecations compared to v0.x.
+This release correctly removes the deprecated APIs as advertised in v2. The [documentation](https://pinia.vuejs.org/cookbook/migration-v1-v2.html) contains a list of all the deprecations compared to v0.x.
 
 ### Bug Fixes
 
@@ -220,7 +243,7 @@ It contains major improvements:
 
 - Performance: Pinia now uses `effectScope()`, effectively reducing memory consumption and removing the drawbacks mentioned in the Plugin section about `useStore()` creating multiple store instances (still sharing the state).
 - Devtools: Many improvements over the information displayed in devtools as well as a few bugfixes
-- HMR (Hot Module Replacement): You can now modify your stores without reloading the page and losing the state, making development much easier. Until 3.2.0 (stable) is released, you can find an example [in the playground](https://github.com/vuejs/pinia/blob/2b98eafe441ea7e9a3ff3cef122c24eb5fa03f1d/playground/src/stores/counter.ts#L66-L68). After that, you can read up to date instructions [in the documentation](https://pinia.esm.dev/cookbook/hot-module-replacement.html).
+- HMR (Hot Module Replacement): You can now modify your stores without reloading the page and losing the state, making development much easier. Until 3.2.0 (stable) is released, you can find an example [in the playground](https://github.com/vuejs/pinia/blob/2b98eafe441ea7e9a3ff3cef122c24eb5fa03f1d/playground/src/stores/counter.ts#L66-L68). After that, you can read up to date instructions [in the documentation](https://pinia.vuejs.org/cookbook/hot-module-replacement.html).
 - Setup syntax: You can now define stores with a function instead of options. This enables more complex patterns. See an example [in the playground](https://github.com/vuejs/pinia/blob/75f1fe6aa4ef2629ae1c9840a2d4542ac6e62686/playground/src/stores/jokes-swrv.ts). Setup Stores are unable to group actions like Option Stores due to their very permissive syntax.
 - Option syntax: we can now pass the `id` as the first parameter. This syntax is preferred over the object syntax to be consistent with the Setup syntax.
 
@@ -407,7 +430,7 @@ It contains major improvements:
   })
   ```
 
-  For more information, refer to [the updated documentation for getters](https://pinia.esm.dev/core-concepts/getters.html).
+  For more information, refer to [the updated documentation for getters](https://pinia.vuejs.org/core-concepts/getters.html).
 
 - **plugins:** To improve the plugin api capabilities, `pinia.use()`
   now receives a context object instead of just `app`:
@@ -419,7 +442,7 @@ It contains major improvements:
   pinia.use(({ app }) => {})
   ```
 
-  Check the new documentation for [Plugins](https://pinia.esm.dev/core-concepts/plugins.html)!
+  Check the new documentation for [Plugins](https://pinia.vuejs.org/core-concepts/plugins.html)!
 
 # [2.0.0-alpha.13](https://github.com/vuejs/pinia/compare/v2.0.0-alpha.12...v2.0.0-alpha.13) (2021-04-10)
 

@@ -56,9 +56,9 @@ export function registerPiniaDevtools(app: DevtoolsApp, pinia: Pinia) {
     {
       id: 'dev.esm.pinia',
       label: 'Pinia 🍍',
-      logo: 'https://pinia.esm.dev/logo.svg',
+      logo: 'https://pinia.vuejs.org/logo.svg',
       packageName: 'pinia',
-      homepage: 'https://pinia.esm.dev',
+      homepage: 'https://pinia.vuejs.org',
       componentStateTypes,
       app,
     },
@@ -265,9 +265,9 @@ function addStoreToDevtools(app: DevtoolsApp, store: StoreGeneric) {
     {
       id: 'dev.esm.pinia',
       label: 'Pinia 🍍',
-      logo: 'https://pinia.esm.dev/logo.svg',
+      logo: 'https://pinia.vuejs.org/logo.svg',
       packageName: 'pinia',
-      homepage: 'https://pinia.esm.dev',
+      homepage: 'https://pinia.vuejs.org',
       componentStateTypes,
       app,
       settings: {
@@ -533,7 +533,6 @@ export function devtoolsPlugin<
   }
 
   addStoreToDevtools(
-    // @ts-expect-error: should be of type App from vue
     app,
     // FIXME: is there a way to allow the assignment from Store<Id, S, G, A> to StoreGeneric?
     store as StoreGeneric

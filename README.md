@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://pinia.esm.dev" target="_blank" rel="noopener noreferrer">
-    <img width="180" src="https://pinia.esm.dev/logo.svg" alt="Pinia logo">
+  <a href="https://pinia.vuejs.org" target="_blank" rel="noopener noreferrer">
+    <img width="180" src="https://pinia.vuejs.org/logo.svg" alt="Pinia logo">
   </a>
 </p>
 <br/>
@@ -36,24 +36,9 @@ Pinia is the most similar English pronunciation of the word _pineapple_ in Spani
 - [One-time donation via PayPal](https://paypal.me/posva)
 
 <!--sponsors start-->
-<h3 align="center">Platinum Sponsors</h3>
-  <p align="center">
-    <a href="https://www.finclip.com/#/home?from=vue" target="_blank" rel="noopener noreferrer">
-      <picture>
-        <source srcset="https://posva-sponsors.pages.dev/logos/fincliplogo_white_svg.svg" media="(prefers-color-scheme: dark)" height="96px" alt="Finogeeks" />
-        <img src="https://posva-sponsors.pages.dev/logos/fincliplogo_black_svg.svg" height="96px" alt="Finogeeks" />
-      </picture>
-    </a>
-  </p>
 
 <h4 align="center">Gold Sponsors</h4>
   <p align="center">
-    <a href="https://www.vuetifyjs.com/" target="_blank" rel="noopener noreferrer">
-      <picture>
-        <source srcset="https://posva-sponsors.pages.dev/logos/vuetify-logo-dark-text.svg" media="(prefers-color-scheme: dark)" height="72px" alt="Vuetify" />
-        <img src="https://posva-sponsors.pages.dev/logos/vuetify-logo-light-text.svg" height="72px" alt="Vuetify" />
-      </picture>
-    </a>
     <a href="https://vuejobs.com/?utm_source=vuerouter&utm_campaign=sponsor" target="_blank" rel="noopener noreferrer">
       <picture>
         <source srcset="https://posva-sponsors.pages.dev/logos/vuejobs.svg" media="(prefers-color-scheme: dark)" height="72px" alt="VueJobs" />
@@ -107,7 +92,7 @@ A few notes about the project and possible questions:
 
 **Q**: _What about dynamic modules?_
 
-**A**: Dynamic modules are not type safe, so instead [we allow creating different stores](https://pinia.esm.dev/cookbook/composing-stores.html) that can be imported anywhere
+**A**: Dynamic modules are not type safe, so instead [we allow creating different stores](https://pinia.vuejs.org/cookbook/composing-stores.html) that can be imported anywhere
 
 ## Roadmap / Ideas
 
@@ -202,8 +187,9 @@ export default defineComponent({
 
 ## Documentation
 
-To learn more about Pinia, check [its documentation](https://pinia.esm.dev).
+To learn more about Pinia, check [its documentation](https://pinia.vuejs.org).
 
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
+

@@ -20,12 +20,13 @@ import {
   ref,
   set,
   del,
+  nextTick,
   isVue2,
 } from 'vue-demi'
 import {
   StateTree,
   SubscriptionCallback,
-  DeepPartial,
+  _DeepPartial,
   isPlainObject,
   Store,
   _Method,
@@ -54,7 +55,7 @@ type _ArrayType<AT> = AT extends Array<infer T> ? T : never
 
 function mergeReactiveObjects<T extends StateTree>(
   target: T,
-  patchToApply: DeepPartial<T>
+  patchToApply: _DeepPartial<T>
 ): T {
   // no need to go through symbols because they cannot be serialized anyway
   for (const key in patchToApply) {
@@ -229,6 +230,7 @@ function createSetupStore<
 
   // internal state
   let isListening: boolean // set to true at the end
+  let isSyncListening: boolean // set to true at the end
   let subscriptions: SubscriptionCallback<S>[] = markRaw([])
   let actionSubscriptions: StoreOnActionListener<Id, S, G, A>[] = markRaw([])
   let debuggerEvents: DebuggerEvent[] | DebuggerEvent
@@ -248,14 +250,14 @@ function createSetupStore<
   const hotState = ref({} as S)
 
   function $patch(stateMutation: (state: UnwrapRef<S>) => void): void
-  function $patch(partialState: DeepPartial<UnwrapRef<S>>): void
+  function $patch(partialState: _DeepPartial<UnwrapRef<S>>): void
   function $patch(
     partialStateOrMutator:
-      | DeepPartial<UnwrapRef<S>>
+      | _DeepPartial<UnwrapRef<S>>
       | ((state: UnwrapRef<S>) => void)
   ): void {
     let subscriptionMutation: SubscriptionCallbackMutation<S>
-    isListening = false
+    isListening = isSyncListening = false
     // reset the debugger events since patches are sync
     /* istanbul ignore else */
     if (__DEV__) {
@@ -277,7 +279,10 @@ function createSetupStore<
         events: debuggerEvents as DebuggerEvent[],
       }
     }
-    isListening = true
+    nextTick().then(() => {
+      isListening = true
+    })
+    isSyncListening = true
     // because we paused the watcher, we need to manually call the subscriptions
     triggerSubscriptions(
       subscriptions,
@@ -384,7 +389,7 @@ function createSetupStore<
         watch(
           () => pinia.state.value[$id] as UnwrapRef<S>,
           (state) => {
-            if (isListening) {
+            if (options.flush === 'sync' ? isSyncListening : isListening) {
               callback(
                 {
                   storeId: $id,
@@ -575,8 +580,12 @@ function createSetupStore<
 
       // avoid devtools logging this as a mutation
       isListening = false
+      isSyncListening = false
       pinia.state.value[$id] = toRef(newStore._hmrPayload, 'hotState')
-      isListening = true
+      isSyncListening = true
+      nextTick().then(() => {
+        isListening = true
+      })
 
       for (const actionName in newStore._hmrPayload.actions) {
         const action: _Method = newStore[actionName]
@@ -702,6 +711,7 @@ function createSetupStore<
   }
 
   isListening = true
+  isSyncListening = true
   return store
 }
 
